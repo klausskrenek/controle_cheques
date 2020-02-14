@@ -1,0 +1,239 @@
+object DataModuleControle: TDataModuleControle
+  OldCreateOrder = False
+  Height = 285
+  HorizontalOffset = 285
+  VerticalOffset = 170
+  Width = 418
+  PPI = 86
+  object SQLite3ConnectionControle: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    Transaction = SQLTransactionControle
+    left = 73
+    top = 22
+  end
+  object SQLTransactionControle: TSQLTransaction
+    Active = False
+    Action = caCommitRetaining
+    Database = SQLite3ConnectionControle
+    left = 73
+    top = 79
+  end
+  object SQLQueryCheques: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'codigo'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'data_cadastro'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'conta'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'agencia'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'banco'
+        DataType = ftString
+        Precision = -1
+        Size = 50
+      end    
+      item
+        Name = 'data_emissao'
+        DataType = ftDate
+        Precision = -1
+      end    
+      item
+        Name = 'numero_cheque'
+        DataType = ftString
+        Precision = -1
+        Size = 20
+      end    
+      item
+        Name = 'descricao'
+        DataType = ftString
+        Precision = -1
+        Size = 200
+      end    
+      item
+        Name = 'favorecido'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'valor'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'status'
+        DataType = ftString
+        Precision = -1
+        Size = 12
+      end    
+      item
+        Name = 'data_compensado'
+        DataType = ftDate
+        Precision = -1
+      end>
+    Filtered = True
+    AfterDelete = SQLQueryChequesAfterPost
+    AfterPost = SQLQueryChequesAfterPost
+    OnNewRecord = SQLQueryChequesNewRecord
+    Database = SQLite3ConnectionControle
+    Transaction = SQLTransactionControle
+    SQL.Strings = (
+      'SELECT * FROM cheques;'
+      ''
+    )
+    Params = <>
+    left = 73
+    top = 136
+    object SQLQueryChequescodigo: TAutoIncField
+      Alignment = taCenter
+      FieldKind = fkData
+      FieldName = 'codigo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = False
+      DisplayFormat = '00000'
+    end
+    object SQLQueryChequesdata_cadastro: TDateField
+      Alignment = taCenter
+      FieldKind = fkData
+      FieldName = 'data_cadastro'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      OnSetText = SQLQueryChequesdata_emissaoSetText
+    end
+    object SQLQueryChequesconta: TStringField
+      Alignment = taCenter
+      FieldKind = fkData
+      FieldName = 'conta'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQueryChequesagencia: TStringField
+      Alignment = taCenter
+      FieldKind = fkData
+      FieldName = 'agencia'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQueryChequesbanco: TStringField
+      FieldKind = fkData
+      FieldName = 'banco'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object SQLQueryChequesdata_emissao: TDateField
+      Alignment = taCenter
+      FieldKind = fkData
+      FieldName = 'data_emissao'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      OnSetText = SQLQueryChequesdata_emissaoSetText
+    end
+    object SQLQueryChequesnumero_cheque: TStringField
+      Alignment = taCenter
+      FieldKind = fkData
+      FieldName = 'numero_cheque'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLQueryChequesdescricao: TStringField
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object SQLQueryChequesfavorecido: TStringField
+      FieldKind = fkData
+      FieldName = 'favorecido'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object SQLQueryChequesvalor: TFloatField
+      FieldKind = fkData
+      FieldName = 'valor'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      OnSetText = SQLQueryChequesvalorSetText
+      Currency = True
+      MaxValue = 0
+      MinValue = 0
+      Precision = -1
+    end
+    object SQLQueryChequesstatus: TStringField
+      FieldKind = fkData
+      FieldName = 'status'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 12
+    end
+    object SQLQueryChequesdata_compensado: TDateField
+      Alignment = taCenter
+      FieldKind = fkData
+      FieldName = 'data_compensado'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object DataSourceCheques: TDataSource
+    DataSet = SQLQueryCheques
+    left = 73
+    top = 201
+  end
+end

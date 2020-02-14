@@ -1,0 +1,527 @@
+object FormPrincipal: TFormPrincipal
+  Left = 278
+  Height = 473
+  Top = 154
+  Width = 672
+  Caption = 'Controle de Cheques'
+  ClientHeight = 473
+  ClientWidth = 672
+  DesignTimePPI = 86
+  Font.Height = -11
+  OnShow = FormShow
+  Position = poDefaultPosOnly
+  LCLVersion = '2.0.6.0'
+  object DBGridDados: TDBGrid
+    Left = 0
+    Height = 257
+    Top = 216
+    Width = 672
+    Align = alBottom
+    AlternateColor = clSkyBlue
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Color = clWindow
+    Columns = <    
+      item
+        Alignment = taCenter
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Código'
+        Width = 60
+        FieldName = 'codigo'
+        DisplayFormat = '00000'
+      end    
+      item
+        Alignment = taCenter
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Data Cadastro'
+        Width = 100
+        FieldName = 'data_cadastro'
+      end    
+      item
+        Alignment = taCenter
+        Font.Height = -11
+        Font.Style = [fsBold]
+        ReadOnly = False
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Conta'
+        Width = 120
+        FieldName = 'conta'
+      end    
+      item
+        Alignment = taCenter
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Agência'
+        Width = 120
+        FieldName = 'agencia'
+      end    
+      item
+        Alignment = taCenter
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Banco'
+        Width = 250
+        FieldName = 'banco'
+      end    
+      item
+        Alignment = taCenter
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Data Emissão'
+        Width = 100
+        FieldName = 'data_emissao'
+      end    
+      item
+        Alignment = taCenter
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Número Cheque'
+        Width = 100
+        FieldName = 'numero_cheque'
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Descrição'
+        Width = 350
+        FieldName = 'descricao'
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Favorecido'
+        Width = 350
+        FieldName = 'favorecido'
+      end    
+      item
+        Alignment = taRightJustify
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Valor'
+        Width = 120
+        FieldName = 'valor'
+      end    
+      item
+        Alignment = taCenter
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Status'
+        Width = 100
+        FieldName = 'status'
+      end    
+      item
+        Alignment = taCenter
+        Title.Alignment = taCenter
+        Title.Font.Height = -11
+        Title.Font.Style = [fsBold]
+        Title.Caption = 'Data Compensado'
+        Width = 100
+        FieldName = 'data_compensado'
+      end>
+    DataSource = DataModuleControle.DataSourceCheques
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
+    Scrollbars = ssAutoBoth
+    TabOrder = 13
+    TitleFont.Height = -11
+    OnTitleClick = DBGridDadosTitleClick
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 59
+    Top = 157
+    Width = 672
+    Align = alBottom
+    BevelInner = bvLowered
+    ClientHeight = 59
+    ClientWidth = 672
+    TabOrder = 12
+    object DBNavegador: TDBNavigator
+      Left = 8
+      Height = 41
+      Top = 8
+      Width = 240
+      BeforeAction = DBNavegadorBeforeAction
+      BevelOuter = bvNone
+      ChildSizing.EnlargeHorizontal = crsScaleChilds
+      ChildSizing.EnlargeVertical = crsScaleChilds
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 100
+      ClientHeight = 41
+      ClientWidth = 240
+      DataSource = DataModuleControle.DataSourceCheques
+      Hints.Strings = (
+        'Primeiro Registro'
+        'Registro Anterior'
+        'Próximo Registro'
+        'Último Registro'
+        'Novo Registro'
+        'Excluir Registro'
+        'Editar Registro'
+        'Salvar Alterações'
+        'Cancelar Alterações'
+        'Atualizar Dados'
+      )
+      Options = []
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+    object ComboBoxFiltra: TComboBox
+      Left = 264
+      Height = 26
+      Top = 23
+      Width = 114
+      AutoSize = False
+      Font.Height = -11
+      ItemHeight = 0
+      Items.Strings = (
+        'A Compensar'
+        'Compensado'
+        'Cancelado'
+        'Voltou'
+        'Todos'
+      )
+      OnSelect = ComboBoxFiltraSelect
+      ParentFont = False
+      Style = csDropDownList
+      TabOrder = 1
+    end
+    object Label1: TLabel
+      Left = 264
+      Height = 14
+      Top = 8
+      Width = 81
+      Caption = 'Filtrar por Status'
+      Font.Height = -11
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 384
+      Height = 14
+      Top = 8
+      Width = 54
+      Caption = 'Favorecido'
+      Font.Height = -11
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object EditFiltrar: TEdit
+      Left = 384
+      Height = 26
+      Top = 23
+      Width = 224
+      Anchors = [akTop, akLeft, akRight]
+      TabOrder = 2
+    end
+    object ButtonFiltrar: TButton
+      Left = 616
+      Height = 26
+      Top = 23
+      Width = 46
+      Anchors = [akTop, akRight]
+      Caption = 'Filtrar'
+      OnClick = ButtonFiltrarClick
+      TabOrder = 3
+    end
+  end
+  object Label3: TLabel
+    Left = 8
+    Height = 14
+    Top = 8
+    Width = 34
+    Caption = 'Código'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 96
+    Height = 14
+    Top = 8
+    Width = 70
+    Caption = 'Data Cadastro'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 304
+    Height = 14
+    Top = 8
+    Width = 40
+    Caption = 'Agência'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 192
+    Height = 14
+    Top = 8
+    Width = 29
+    Caption = 'Conta'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 416
+    Height = 14
+    Top = 8
+    Width = 30
+    Caption = 'Banco'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object DBEditCodigo: TDBEdit
+    Left = 8
+    Height = 26
+    Top = 24
+    Width = 80
+    DataField = 'codigo'
+    DataSource = DataModuleControle.DataSourceCheques
+    ReadOnly = True
+    CharCase = ecNormal
+    Color = clSilver
+    MaxLength = 0
+    TabOrder = 0
+    TabStop = False
+  end
+  object DBEditDataCadastro: TDBEdit
+    Left = 96
+    Height = 26
+    Top = 24
+    Width = 90
+    DataField = 'data_cadastro'
+    DataSource = DataModuleControle.DataSourceCheques
+    ReadOnly = True
+    CharCase = ecNormal
+    Color = clSilver
+    EditMask = '99/99/9999;1;_'
+    MaxLength = 10
+    TabOrder = 1
+    TabStop = False
+  end
+  object DBEditConta: TDBEdit
+    Left = 192
+    Height = 26
+    Top = 24
+    Width = 104
+    DataField = 'conta'
+    DataSource = DataModuleControle.DataSourceCheques
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 2
+  end
+  object DBEditAgencia: TDBEdit
+    Left = 304
+    Height = 26
+    Top = 24
+    Width = 108
+    DataField = 'agencia'
+    DataSource = DataModuleControle.DataSourceCheques
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 3
+  end
+  object DBEditBanco: TDBEdit
+    Left = 416
+    Height = 26
+    Top = 24
+    Width = 248
+    DataField = 'banco'
+    DataSource = DataModuleControle.DataSourceCheques
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 4
+  end
+  object Label8: TLabel
+    Left = 8
+    Height = 14
+    Top = 56
+    Width = 68
+    Caption = 'Data Emissão'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label9: TLabel
+    Left = 104
+    Height = 14
+    Top = 56
+    Width = 80
+    Caption = 'Número Cheque'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label10: TLabel
+    Left = 208
+    Height = 14
+    Top = 56
+    Width = 48
+    Caption = 'Descrição'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label11: TLabel
+    Left = 564
+    Height = 14
+    Top = 56
+    Width = 26
+    Caption = 'Valor'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object DBEditDataEmissao: TDBEdit
+    Left = 8
+    Height = 26
+    Top = 72
+    Width = 90
+    DataField = 'data_emissao'
+    DataSource = DataModuleControle.DataSourceCheques
+    CharCase = ecNormal
+    EditMask = '99/99/9999;1;_'
+    MaxLength = 10
+    TabOrder = 5
+  end
+  object DBEditNumeroCheque: TDBEdit
+    Left = 104
+    Height = 26
+    Top = 72
+    Width = 100
+    DataField = 'numero_cheque'
+    DataSource = DataModuleControle.DataSourceCheques
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 6
+  end
+  object DBEditDescricao: TDBEdit
+    Left = 208
+    Height = 26
+    Top = 72
+    Width = 348
+    DataField = 'descricao'
+    DataSource = DataModuleControle.DataSourceCheques
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 7
+  end
+  object DBEditValor: TDBEdit
+    Left = 568
+    Height = 26
+    Top = 72
+    Width = 96
+    DataField = 'valor'
+    DataSource = DataModuleControle.DataSourceCheques
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 8
+  end
+  object Label12: TLabel
+    Left = 8
+    Height = 14
+    Top = 104
+    Width = 54
+    Caption = 'Favorecido'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label13: TLabel
+    Left = 448
+    Height = 14
+    Top = 104
+    Width = 31
+    Caption = 'Status'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label14: TLabel
+    Left = 574
+    Height = 14
+    Top = 104
+    Width = 90
+    Caption = 'Data Compensado'
+    Font.Height = -11
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object DBEditFavorecido: TDBEdit
+    Left = 8
+    Height = 26
+    Top = 120
+    Width = 432
+    DataField = 'favorecido'
+    DataSource = DataModuleControle.DataSourceCheques
+    CharCase = ecNormal
+    MaxLength = 0
+    TabOrder = 9
+  end
+  object DBEdit1DataCompensado: TDBEdit
+    Left = 574
+    Height = 26
+    Top = 120
+    Width = 90
+    DataField = 'data_compensado'
+    DataSource = DataModuleControle.DataSourceCheques
+    CharCase = ecNormal
+    EditMask = '99/99/9999;1;_'
+    MaxLength = 10
+    TabOrder = 11
+  end
+  object DBComboBoxStatus: TDBComboBox
+    Left = 448
+    Height = 26
+    Top = 120
+    Width = 114
+    AutoSize = False
+    DataField = 'status'
+    DataSource = DataModuleControle.DataSourceCheques
+    ItemHeight = 0
+    Items.Strings = (
+      'A Compensar'
+      'Compensado'
+      'Cancelado'
+      'Voltou'
+    )
+    MaxLength = 0
+    Style = csDropDownList
+    TabOrder = 10
+  end
+end
