@@ -72,12 +72,12 @@ procedure TFormPrincipal.FormShow(Sender: TObject);
 var
   sql: string;
 begin
-  DateSeparator := '/';
-  ShortDateFormat := 'dd/mm/yyyy';
-  ThousandSeparator := '.';
-  DecimalSeparator := ',';
-  CurrencyFormat := 2;
-  CurrencyString := 'R$';
+  DefaultFormatSettings.DateSeparator := '/';
+  DefaultFormatSettings.ShortDateFormat := 'dd/mm/yyyy';
+  DefaultFormatSettings.ThousandSeparator := '.';
+  DefaultFormatSettings.DecimalSeparator := ',';
+  DefaultFormatSettings.CurrencyFormat := 2;
+  DefaultFormatSettings.CurrencyString := 'R$';
 
   sql := 'CREATE TABLE IF NOT EXISTS cheques (' +
     'codigo INTEGER NOT NULL PRIMARY KEY,' + 'data_cadastro DATE,' +
