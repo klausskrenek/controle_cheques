@@ -21,6 +21,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
+        <TopLine Value="157"/>
         <CursorPos X="48" Y="180"/>
         <UsageCount Value="29"/>
         <Loaded Value="True"/>
@@ -33,7 +34,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="83"/>
+        <TopLine Value="79"/>
         <CursorPos X="20" Y="86"/>
         <UsageCount Value="29"/>
         <Loaded Value="True"/>

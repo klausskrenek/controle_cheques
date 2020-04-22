@@ -1,27 +1,26 @@
 object DataModuleControle: TDataModuleControle
   OldCreateOrder = False
-  Height = 285
-  HorizontalOffset = 285
-  VerticalOffset = 170
-  Width = 418
-  PPI = 86
+  Height = 272
+  HorizontalOffset = 669
+  VerticalOffset = 185
+  Width = 399
+  PPI = 82
   object SQLite3ConnectionControle: TSQLite3Connection
     Connected = False
     LoginPrompt = False
     KeepConnection = False
     Transaction = SQLTransactionControle
-    left = 73
-    top = 22
+    left = 70
+    top = 21
   end
   object SQLTransactionControle: TSQLTransaction
     Active = False
     Action = caCommitRetaining
     Database = SQLite3ConnectionControle
-    left = 73
-    top = 79
+    left = 70
+    top = 75
   end
   object SQLQueryCheques: TSQLQuery
-    IndexName = 'DEFAULT_ORDER'
     FieldDefs = <    
       item
         Name = 'codigo'
@@ -101,8 +100,8 @@ object DataModuleControle: TDataModuleControle
       ''
     )
     Params = <>
-    left = 73
-    top = 136
+    left = 70
+    top = 130
     object SQLQueryChequescodigo: TAutoIncField
       Alignment = taCenter
       FieldKind = fkData
@@ -233,7 +232,7 @@ object DataModuleControle: TDataModuleControle
   end
   object DataSourceCheques: TDataSource
     DataSet = SQLQueryCheques
-    left = 73
-    top = 201
+    left = 70
+    top = 192
   end
 end
